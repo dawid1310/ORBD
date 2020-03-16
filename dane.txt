@@ -1,0 +1,22 @@
+* nazwiska, imiona, adresy mailowe oraz numery grup członków zespołu,
+* temat projektu,
+* spis technologii, które będą używane (systemów, języków programowania, najważniejszych bibliotek, frameworków, itp.)
+* realistyczny plan pracy wraz z listą funkcjonalności, które zostaną zaimplementowane,
+* podział prac w zespole,
+* tematy prac inżynierskich i (jeżeli są znane, to również) magisterskich studentów realizujących projekt.
+to wyżej do usunięcia 
+
+Skład zespołu:
+Agnieszka Rogowska - agnieszka8rogowska@gmail.com - 1ID21A
+Dawid Kosmala	   - dawidkosmala1310@gmail.com	  - 1ID21A	
+
+Temat Projektu: Relacyjno - obiektowe bazy danych
+
+Używane technologie: system Windows, PHP, SQL co jeszce?
+
+**** realistyczny plan pracy wraz z listą funkcjonalności, które zostaną zaimplementowane,?????????????????????
+**** podział prac w zespole, ?????????? no co, poł na pol
+
+Tematy prac inżynierskich: 
+Agnieszka Rogowska - Opracowanie aplikacji do internetowej sprzedaży biletów lotniczych.
+Dawid Kosmala - Opracowanie systemu do internetowej sprzedaży biletów na wydarzenia sportowe w postaci wielowarstwowej aplikacji bazy danych.
