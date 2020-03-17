@@ -7,7 +7,7 @@ Temat Projektu: Relacyjno - obiektowe bazy danych
 Używane technologie: system Windows, Oracle Database, PHP, HTML, CSS
 
 Tygodnie 1-4 - opracowanie części teoretycznej
-Tygodnie 4-14 - opracowanie części praktycznej
+Tygodnie 4-14 - opracowanie części praktycznej, system do przechowywania danych o figurach geometrycznych
 Lista funkcjonalności: dodawanie, usuwanie, modyfikacja, odczyt
 
 Podział prac w zespole:
