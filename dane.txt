@@ -1,21 +1,33 @@
-* nazwiska, imiona, adresy mailowe oraz numery grup członków zespołu,
-* temat projektu,
-* spis technologii, które będą używane (systemów, języków programowania, najważniejszych bibliotek, frameworków, itp.)
-* realistyczny plan pracy wraz z listą funkcjonalności, które zostaną zaimplementowane,
-* podział prac w zespole,
-* tematy prac inżynierskich i (jeżeli są znane, to również) magisterskich studentów realizujących projekt.
-to wyżej do usunięcia 
-
 Skład zespołu:
 Agnieszka Rogowska - agnieszka8rogowska@gmail.com - 1ID21A
 Dawid Kosmala	   - dawidkosmala1310@gmail.com	  - 1ID21A	
 
 Temat Projektu: Relacyjno - obiektowe bazy danych
 
-Używane technologie: system Windows, PHP, SQL co jeszce?
+Używane technologie: system Windows, Oracle Database, PHP, HTML, CSS
 
-**** realistyczny plan pracy wraz z listą funkcjonalności, które zostaną zaimplementowane,?????????????????????
-**** podział prac w zespole, ?????????? no co, poł na pol
+Tygodnie 1-4 - opracowanie części teoretycznej
+Tygodnie 4-14 - opracowanie części praktycznej
+Lista funkcjonalności: dodawanie, usuwanie, modyfikacja, odczyt
+
+Podział prac w zespole:
+Agnieszka Rogowska:
+- omówienie wybranej relacyjno - obiektowej bazy danych
+- typy danych łączące dane
+- tworzenie 
+- polimorfizm
+- hermetyzacja
+- identyfikatory obiektowe (OID)
+- Część praktyczna: Modyfikacja i wyświetlanie danych
+
+Dawid Kosmala:
+- metody operujące na danych
+- usuwanie 
+- dziedziczenie
+- abstrakcja (abstrakcyjność)
+- typy referencyjne (REF, DEREF)
+- porównanie możliwości związanych z obiektowością wybranej bazy danych z jej relacyjnymi możliwościami
+- Część praktyczna: Dodawanie oraz usuwanie danych
 
 Tematy prac inżynierskich: 
 Agnieszka Rogowska - Opracowanie aplikacji do internetowej sprzedaży biletów lotniczych.
