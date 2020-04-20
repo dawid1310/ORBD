@@ -1,0 +1,58 @@
+Typ obiektowy
+•	Typ obiektowy (inaczej klasa) łączy w sobie atrybuty oraz metody. 
+•	Typy obiektowe można wykorzystać w blokach PL/SQL a także w definicji kolumn i tabel.
+•	Wykorzystanie obiektu wymaga najpierw zadeklarowania jego typu w bazie danych.
+•	Obiekty mogą być:
+	– trwałe (zapisywane w bazie danych),
+	– nietrwałe (przechowywane tylko z zmiennych języka PL/SQL).
+•	Typ obiektowy dzieli się na specyfikację oraz ciało
+Definicja typu obiektowego ma następującą postać:
+CREATE [OR REPLACE] TYPE nazwa_typu
+{ { AS | IS } OBJECT | UNDER nazwa_typu_macierzystego }
+(
+atrybut1 typ1 [, atrybut2 typ2]...
+[,[ [NOT] OVERRIDING ] [ [NOT] FINAL ] [ [NOT] INSTANTIABLE ]
+{ MEMBER | STATIC } specyfikacja_metody, ..., ]
+)
+[ [NOT] FINAL ]
+[ [NOT] INSTANTIABLE ];
+
+Specyfikacja metody ma postać:
+PROCEDURE nazwa_procedury (par1 typ1 [, par2 typ2 ]...)
+FUNCTION nazwa_funkcji (par1 typ1 [, par2 typ2 ]...)
+RETURN typ_zwracany
+
+Konstruktor
+Konstruktor typów obiektowych
+• Każdy typ obiektowy ma konstruktor, funkcję o takiej samej nazwie jak obiekt typu.
+• Konstruktor inicjalizuje i zwraca nową instancję obiektu danego typu.
+• Konstruktory generowane są domyślnie dla każdego typu.
+• Zawierają listę parametrów formalnych zgodną z porządkiem, nazwami i typami
+atrybutów typu.
+• Można definiować własne konstruktory zastępując istniejące albo przeładowując je
+podając inną listę parametrów.
+• Konstruktory trzeba wywoływać jawnie. 
+
+Tworzenie obiektów:
+Typy obiektowe (klasy) są składowane w bazie danych jako obiekty bazy danych podobnie jak perspektywy, wyzwalacze albo pakiety. Typy obiektowe można utworzyć za pomocą polecenia CREATE [OR REPLACE] TYPE nazwa AS OBJECT. 
+Przykład: 
+create or replace type telefon as object (	
+siec character varying (20),	
+darmowe_minuty numeric(5,2), 	
+numer character varying (30) );
+Analizując przykładowe polecenie łatwo zauważyć, że składnia tego polecenia jest podobna do składni polecenia CREATE TABLE. Po rozpoczęciu polecenia słowami kluczowymi CREATE, opcjonalnie OR REPLACE, podaniu nazwy tworzonego typu i słowach kluczowych AS OBJECT podaje się w nawiasach listę atrybutów. Listę atrybutów podaje się w sposób analogiczny do polecenia CREATE TABLE, nie można jednak definiować żadnych ograniczeń integralnościowych. Polecenie CREATE TYPE.. AS OBJECT kończy się średnikiem.
+
+Polimorfizm - przedefiniując dziedziczone metody w podtypie mamy możliwość zdefiniowania innego sposobu wykonania metod na obiektach podtypu. Obiekt podtypu może być użyty w kodzie w miejsce obiektu nadtypu – definiując dla różnych podtypów różne działania.
+Polimorfizm powoduje, że obiekty podtypu mogą zachowywać się jak obiekty swojego nadtypu – zamiast obiektu nadtypu można wykorzystać obiekt podtypu – zamiast obiektu podtypu można wymusić wykorzystanie obiektu nadtypu przez użycie operatora TREAT – wybór wersji metody przeciążonej następuje w momencie wykonania programu (metody są wirtualne).
+CREATE TABLE pracownicyIdydaktycyObjTab OF PRACOWNIK;
+INSERT INTO pracownicyIdydaktycyObjTab VALUES
+(NEW Pracownik('Bolek',2000,'ASYSTENT',DATE '1969-09-03'));
+INSERT INTO pracownicyIdydaktycyObjTab VALUES
+(NEW Dydaktyk('Lolek',5000,'PROF.',DATE '1949-11-13','dr.'));
+SELECT p.nazwisko, p.wiek() FROM pracownicyIdydaktycyObjTab p;
+
+Hermetyzacja - W obiektowych bazach danych stała się możliwa hermetyzacja (ang. encapsulate) ponieważ na obiektach możemy operować metodami.
+
+Typy referencyjne
+• OID
+– identyfikator obiektu wierszowego. Object identity – zakłada się, że obiekty mają własny identyfikator, w związku z czym żadne dwa obiekty nie mogą mieć tego samego OID i żaden obiekt nie może mieć dwóch różnych OID. 
