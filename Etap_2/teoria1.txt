@@ -1,0 +1,32 @@
+Relacyjno – obiektowe bazy danych to hybrydowe architektury baz danych. Powstają najczęściej poprzez rozszerzenie istniejących relacyjnych systemów bazodanowych o cechy obiektowe. Jest to swojego rodzaju kompromis pomiędzy relacyjnymi, a obiektowymi bazami danych. Obiektowe bazy danych nie mają tak szerokiej infrastruktury jak relacyjne, a budowanie ich od początku wiąże się z dużymi kosztami. Pozwalają na operowanie na danych jak na obiektach, jednakże posiadają relacyjną bazę jako wewnętrzny mechanizm przechowywania danych.
+
+Stanowią bardzo silna grupę systemów, która w ostatnim czasie dobrze zaznaczyła się na rynku oprogramowania. Nazywane są Object Relational lub Extended Relational. Kierunek rozwoju jest wyznaczany przez dwie tendencje:
+•	dążenie do zniwelowania niedostatków technologii relacyjnej, szczególnie w zakresie danych multimedialnych, dołączania metod lub reguł "zachowania się" danych, modelowania pojęciowego,
+•	chęć wprowadzenia wielu cech obiektowości, takich jak klasy, metody, dziedziczenie, abstrakcyjne typy danych (ADT) - własności potwierdzające choć częściowa obiektowość systemu relacyjnego.
+
+Model danych
+ORDBMS korzysta z modelu danych zawartego w standardzie SQL3, który mówi, ze "obiektowo-relacyjny model danych próbuje dodać obiektowości do tablic". Dane są wciąż przechowywane w tabelach, jednak wartości mogą mięć nieco bogatsza niż dotychczas postać - ADT (Abstract Data Type). Pola typu ADT zachowują funkcjonalność zwykłych pól (mogą być używane do indeksowania, wyszukiwania, pobierania lub umieszczania danych) przy nowych zawartościach (jak np. multimedia).
+
+Jezyk zapytań
+Ponieważ ten model rozszerza model relacyjny, dlatego opracowywany obecnie SQL3 (nazywany tez ObjectSQL) jest rozszerzeniem SQL. Rozszerzenie dotyczy rozbudowy możliwości zapytań o obiekty zagnieżdżone, ADT, atrybuty o wartości wyliczanej (np. metody obiektu), itp. Wyniki są jednak wciąż podawane w formie tabel krotek, a nie jako kolekcje obiektów.
+
+Model obliczeniowy
+Rozszerzony język SQL jest podstawowym interfejsem dostępu do danych. Bezpośrednie odwzorowanie miedzy obiektami z języka programowania a obiektami / tabelami w bazie nie istnieje, tłumaczenie wciąż obciąża programistę.
+
+Obiektowo-relacyjne bazy danych zapewniają:
+•	kolekcje (zbiory, wielozbiory, sekwencje, zagnieżdżone tablice, tablice o zmiennej
+•	długości, tabele obiektów),
+•	metody użytkownika (funkcje i procedury definiowane przez użytkownika w różnych
+•	językach C++, VisualBasic, Java, PL/SQL)
+•	przeciążanie funkcji,
+•	typy referencyjne,
+•	perspektywy obiektowe,
+•	hierarchie zbiorów danych,
+•	przystosowanie do multimediów (duże obiekty BLOB, CLOB i pliki binarne),
+•	dane przestrzenne (spatial),
+•	abstrakcyjne typy danych (ADT)
+•	język zapytań SQL3 zwany też ObjectSQL.
+
+UDT  User-Defined Types – typy definiowane przez użytkownika oraz UDF  User-Defined Functions – funkcje definiowane przez użytkownika, takie typy wraz z potrzebnymi do manipulowania nimi funkcjami i operatorami mogą być definiowane dla potrzeb jednej bazy danych lub aplikacji, z poziomu języka SQL, za pomocą instrukcji create type, create function, create operator itp.
+Przykład:
+create type mojtyp(internallenght = 8);
