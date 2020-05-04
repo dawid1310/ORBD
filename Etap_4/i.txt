@@ -1,4 +1,0 @@
-Etap 4
-Konfiguracja środowiska
-Konfiguracja połączenia
-Klasy figur
