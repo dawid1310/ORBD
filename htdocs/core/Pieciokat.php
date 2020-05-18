@@ -36,13 +36,27 @@ class Pieciokat{
         $this->pole=$result['pole'];
     }
 
-    public function displayPieciokat(){
+    public function displayOne(){
         echo "Pieciokat o id: ".$this->id."<br>";
         echo "Bok to: ".$this->bok."<br>";
         echo "Pole to: ".$this->pole."<br>";
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
+    public function displayAll(){
+        $result = $app['database']->selectAll("pieciokat");
+        foreach($result as $pieciokat):
+        echo "Pieciokat o id: ".$pieciokat['id']."<br>";
+        echo "Bok to: ".$pieciokat['bok']."<br>";
+        echo "Pole to: ".$pieciokat['pole']."<br>";
+        echo "Obwod to: ".$pieciokat['obwod']."<br>";
+        endforeach;
+
+    }
+    public function returnAll(){
+        $result = $app['database']->selectAll("kolo");
+        return $result;
+    }
     public function LoadToDB(){
         $app['database']->addPieciokat($this->bok, $this->obwod, $this->pole);
     }

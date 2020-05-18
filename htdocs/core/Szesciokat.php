@@ -32,13 +32,27 @@ class Szesciokat{
         $this->pole=$result['pole'];
     }
 
-    public function displaySzesciokat(){
+    public function displayOne(){
         echo "Szesciokat o id: ".$this->id."<br>";
         echo "Bok to: ".$this->bok."<br>";
         echo "Pole to: ".$this->pole."<br>";
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
+    public function displayAll(){
+        $result = $app['database']->selectAll("szesciokat");
+        foreach($result as $szesciokat):
+        echo "Szesciokat o id: ".$szesciokat['id']."<br>";
+        echo "Bok to: ".$szesciokat['bok']."<br>";
+        echo "Pole to: ".$szesciokat['pole']."<br>";
+        echo "Obwod to: ".$szesciokat['obwod']."<br>";
+        endforeach;
+
+    }
+    public function returnAll(){
+        $result = $app['database']->selectAll("kolo");
+        return $result;
+    }
     public function LoadToDB(){
         $app['database']->addSzesciokat($this->bok, $this->obwod, $this->pole);
     }

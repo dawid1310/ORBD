@@ -34,7 +34,7 @@ class Prostokat{
         $this->pole=$result['pole'];
     }
 
-    public function displayProstokat(){
+    public function displayOne(){
         echo "Prostokat o id: ".$this->id."<br>";
         echo "Bok1 to: ".$this->bok1."<br>";
         echo "Bok2 to: ".$this->bok2."<br>";
@@ -42,6 +42,21 @@ class Prostokat{
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
+    public function displayAll(){
+        $result = $app['database']->selectAll("prostokat");
+        foreach($result as $prostokat):
+        echo "Prostokat o id: ".$prostokat['id']."<br>";
+        echo "Bok1 to: ".$prostokat['bok1']."<br>";
+        echo "Bok2 to: ".$prostokat['bok2']."<br>";
+        echo "Pole to: ".$prostokat['pole']."<br>";
+        echo "Obwod to: ".$prostokat['obwod']."<br>";
+        endforeach;
+
+    }
+    public function returnAll(){
+        $result = $app['database']->selectAll("kolo");
+        return $result;
+    }
     public function LoadToDB(){
         $app['database']->addProstokat( $this->bok1, $this->bok2, $this->obwod, $this->pole);
     }

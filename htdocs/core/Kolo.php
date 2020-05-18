@@ -34,7 +34,8 @@ class Kolo{
         $this->pole=$result['pole'];
     }
 
-    public function displayKolo(){
+    public function displayOne(){
+        
         echo "Kolo o id: ".$this->id."<br>";
         echo "Promien to: ".$this->promien."<br>";
         echo "Srednica to: ".$this->srednica."<br>";
@@ -42,7 +43,28 @@ class Kolo{
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
+    public function displayAll(){
+        $result = $app['database']->selectAll("kolo");
+        foreach($result as $kolo):
+        echo "Kolo o id: ".$kolo['id']."<br>";
+        echo "Promien to: ".$kolo['promien']."<br>";
+        echo "Srednica to: ".$kolo['srednica']."<br>";
+        echo "Pole to: ".$kolo['pole']."<br>";
+        echo "Obwod to: ".$kolo['obwod']."<br>";
+        endforeach;
+
+    }
+
+    public function returnAll(){
+        $result = $app['database']->selectAll("kolo");
+        return $result;
+    }
+
     public function LoadToDB(){
+        $app['database']->addKolo($this->promien, $this->srednica, $this->obwod, $this->pole);
+    }
+
+    public function Modify(){
         $app['database']->addKolo($this->promien, $this->srednica, $this->obwod, $this->pole);
     }
 

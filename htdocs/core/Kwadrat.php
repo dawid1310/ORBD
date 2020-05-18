@@ -27,15 +27,30 @@ class Kwadrat{
         $this->id=$result['id'];
         $this->typ=$result['typ'];
         $this->bok=$result['bok'];
+        $this->srednica=$result['srednica'];
         $this->obwod=$result['obwod'];
         $this->pole=$result['pole'];
     }
 
-    public function displayKwadrat(){
+    public function displayOne(){
         echo "Kwadrat o id: ".$this->id."<br>";
         echo "Bok to: ".$this->bok."<br>";
         echo "Pole to: ".$this->pole."<br>";
         echo "Obwod to: ".$this->obwod."<br>";
+    }
+    public function displayAll(){
+        $result = $app['database']->selectAll("kwadrat");
+        foreach($result as $kwadrat):
+        echo "Kwadrat o id: ".$kwadrat['id']."<br>";
+        echo "Bok to: ".$kwadrat['bok']."<br>";
+        echo "Pole to: ".$kwadrat['pole']."<br>";
+        echo "Obwod to: ".$kwadrat['obwod']."<br>";
+        endforeach;
+
+    }
+    public function returnAll(){
+        $result = $app['database']->selectAll("kolo");
+        return $result;
     }
 
     public function LoadToDB(){

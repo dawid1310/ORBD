@@ -14,8 +14,7 @@ class Trojkat{
         $this->obliczObwod($bok1, $bok2, $bok3);
         $pol_obwodu = ($this->obwod) / 2;
         $this->pole = sqrt(
-            $pol_obwodu *($pol_obwodu - $bok1)*($pol_obwodu - $bok2)*($pol_obwodu - $bok3)*
-        );
+            $pol_obwodu *($pol_obwodu - $bok1)*($pol_obwodu - $bok2)*($pol_obwodu - $bok3));
     }
 
     private function obliczObwod($bok1, $bok2, $bok3){
@@ -31,7 +30,7 @@ class Trojkat{
     }
 
     public function getFromDB($id){
-        $result = $app['database']->selectOne($id, "kwadrat");
+        $result = $app['database']->selectOne($id, "trojkat");
         $this->id=$result['id'];
         $this->typ=$result['typ'];
         $this->bok=$result['bok1'];
@@ -41,15 +40,29 @@ class Trojkat{
         $this->pole=$result['pole'];
     }
 
-    public function displayTrojkat(){
+    public function displayOne(){
         echo "Trojkat o id: ".$this->id."<br>";
-        echo "Bok1 o id: ".$this->bok1."<br>";
-        echo "Bok2 o id: ".$this->bok2."<br>";
-        echo "Bok3 o id: ".$this->bok3."<br>";
+        echo "Bok1 to: ".$this->bok1."<br>";
+        echo "Bok2 to: ".$this->bok2."<br>";
+        echo "Bok3 to: ".$this->bok3."<br>";
         echo "Pole to: ".$this->pole."<br>";
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
+    public function displayAll(){
+        $result = $app['database']->selectAll("trojkat");
+        foreach($result as $trojkat):
+        echo "Trojkat o id: ".$trojkat['id']."<br>";
+        echo "Bok to: ".$trojkat['bok']."<br>";
+        echo "Pole to: ".$trojkat['pole']."<br>";
+        echo "Obwod to: ".$trojkat['obwod']."<br>";
+        endforeach;
+
+    }
+    public function returnAll(){
+        $result = $app['database']->selectAll("kolo");
+        return $result;
+    }
     public function LoadToDB(){
         $app['database']->addTrojkat($this->bok1, $this->bok2, $this->bok3, $this->obwod, $this->pole);
     }
