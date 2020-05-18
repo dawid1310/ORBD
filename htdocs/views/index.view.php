@@ -4,21 +4,18 @@
 </head>
 <body>
 
-<a href="insert.php">insert</a>
-<div class="w-75 mx-auto">
+<div class="w-75 mx-auto"><br><br>
     <div class="w-50 float-left">
         <div class="w-100 btn btn-primary active">
             Obiektowo-relacyjna baza danych
         </div><br><br><br><br><br>
         <div class="w-75 mx-auto">
-            <form>
                 <div class="form-group">
-                    <button type="submit" class=" btn btn-primary w-100">Odczyt danych</button><br><br><br>
-                    <button type="submit" class="btn btn-primary w-100">Dodawanie danych</button><br><br><br>
-                    <button type="submit" class="btn btn-primary w-100">Modyfikacja danych</button><br><br><br>
-                    <button type="submit" class="btn btn-primary w-100">Usuwanie danych</button><br><br><br>
+                    <a class="btn btn-primary w-100" href="select" role="button">Odczyt danych</a><br><br><br>
+                    <a class="btn btn-primary w-100" href="add"    role="button">Dodawanie danych</a><br><br><br>
+                    <a class="btn btn-primary w-100" href="update" role="button">Modyfikacja danych</a><br><br><br>
+                    <a class="btn btn-primary w-100" href="delete" role="button">Usuwanie danych</a><br><br><br>
                 </div><br><br>
-            </form>
         </div>
     </div>
     <div class="w-50 float-right">
@@ -26,14 +23,12 @@
             Relacyjna baza danych
         </div><br><br><br><br><br>
         <div class="w-75 mx-auto">
-            <form>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-secondary w-100">Odczyt danych</button><br><br><br>
-                    <button type="submit" class="btn btn-secondary w-100">Dodawanie danych</button><br><br><br>
-                    <button type="submit" class="btn btn-secondary w-100">Modyfikacja danych</button><br><br><br>
-                    <button type="submit" class="btn btn-secondary w-100">Usuwanie danych</button><br><br><br>
+                    <a class="btn btn-secondary w-100" href="relselect" role="button">Odczyt danych</a><br><br><br>
+                    <a class="btn btn-secondary w-100" href="reladd"    role="button">Dodawanie danych</a><br><br><br>
+                    <a class="btn btn-secondary w-100" href="relupdate" role="button">Modyfikacja danych</a><br><br><br>
+                    <a class="btn btn-secondary w-100" href="reldelete" role="button">Usuwanie danych</a><br><br><br>
                 </div><br><br>
-            </form>
             </div>
     </div>
 </div>
