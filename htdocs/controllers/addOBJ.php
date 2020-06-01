@@ -1,6 +1,5 @@
 <?php
-require 'views/add.view.php';
-
+require 'views/addOBJ.view.php';
 if (isset($_POST['kwadrat'])) {
     $bokKwadrat = $_POST['kwadrat']; 
     $kwadrat = new Kwadrat();
