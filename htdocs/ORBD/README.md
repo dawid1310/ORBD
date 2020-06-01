@@ -1,2 +1,0 @@
-# ORBD
-Projekt technologie obiektowe
