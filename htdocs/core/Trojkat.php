@@ -21,10 +21,15 @@ class Trojkat{
         $this->obwod = $bok1 + $bok2 + $bok3;
     }
 
+    private function getId($app){
+        $this->id = $app['database']->selectId("trojkat")+1;
+    }
+
     public function getFromUser($bok1, $bok2, $bok3){
         $this->bok1=$bok1;
         $this->bok2=$bok2;
         $this->bok3=$bok3;
+        $this->getId($app);
         $this->obliczObwod($bok1, $bok2, $bok3);
         $this->obliczPole($bok1, $bok2, $bok3);
     }
@@ -49,7 +54,7 @@ class Trojkat{
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
-    public function LoadToDB($app){
+    public function LoadToDB(){
         $app['database']->addTrojkat($this->bok1, $this->bok2, $this->bok3, $this->obwod, $this->pole);
     }
 
