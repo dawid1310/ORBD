@@ -49,7 +49,7 @@ class Trojkat{
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
-    public function LoadToDB(){
+    public function LoadToDB($app){
         $app['database']->addTrojkat($this->bok1, $this->bok2, $this->bok3, $this->obwod, $this->pole);
     }
 
