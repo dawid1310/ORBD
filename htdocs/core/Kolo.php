@@ -17,9 +17,14 @@ class Kolo{
         $this->obwod = $promien*2*pi();
     }
 
-    public function getFromUser($promien){
+    private function getId($app){
+        $this->id = $app['database']->selectId("kolo")+1;
+    }
+
+    public function getFromUser($promien, $app){
         $this->promien=$promien;
         $this->srednica=2*$promien;
+        $this->getId($app);
         $this->obliczObwod($promien);
         $this->obliczPole($promien);
     }
@@ -42,7 +47,7 @@ class Kolo{
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
-    public function LoadToDB(){
+    public function LoadToDB($app){
         $app['database']->addKolo($this->promien, $this->srednica, $this->obwod, $this->pole);
     }
 

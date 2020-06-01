@@ -21,8 +21,13 @@ class Pieciokat{
         $this->obwod = $bok*5;
     }
 
-    public function getFromUser($bok){
+    private function getId($app){
+        $this->id = $app['database']->selectId("pieciokat")+1;
+    }
+
+    public function getFromUser($bok, $app){
         $this->bok=$bok;
+        $this->getId($app);
         $this->obliczObwod($bok);
         $this->obliczPole($bok);
     }
@@ -43,7 +48,7 @@ class Pieciokat{
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
-    public function LoadToDB(){
+    public function LoadToDB($app){
         $app['database']->addPieciokat($this->bok, $this->obwod, $this->pole);
     }
 

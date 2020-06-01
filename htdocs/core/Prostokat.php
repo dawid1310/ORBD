@@ -17,9 +17,14 @@ class Prostokat{
         $this->obwod = $bok1 * 2 + $bok2 * 2;
     }
 
-    public function getFromUser($bok1, $bok2){
+    private function getId($app){
+        $this->id = $app['database']->selectId("prostokat")+1;
+    }
+
+    public function getFromUser($bok1, $bok2, $app){
         $this->bok1=$bok1;
         $this->bok2=$bok2;
+        $this->getId($app);
         $this->obliczObwod($bok1, $bok2);
         $this->obliczPole($bok1, $bok2);
     }
@@ -42,7 +47,7 @@ class Prostokat{
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
-    public function LoadToDB(){
+    public function LoadToDB($app){
         $app['database']->addProstokat( $this->bok1, $this->bok2, $this->obwod, $this->pole);
     }
 

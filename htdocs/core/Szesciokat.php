@@ -17,8 +17,14 @@ class Szesciokat{
         $this->obwod = $bok*6;
     }
 
-    public function getFromUser($bok){
+    private function getId($app){
+        $this->id = $app['database']->selectId("szesciokat")+1;
+    }
+
+
+    public function getFromUser($bok, $app){
         $this->bok=$bok;
+        $this->getId($app);
         $this->obliczObwod($bok);
         $this->obliczPole($bok);
     }
@@ -39,7 +45,7 @@ class Szesciokat{
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
-    public function LoadToDB(){
+    public function LoadToDB($app){
         $app['database']->addSzesciokat($this->bok, $this->obwod, $this->pole);
     }
 
