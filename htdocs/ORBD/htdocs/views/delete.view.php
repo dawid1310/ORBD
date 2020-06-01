@@ -6,7 +6,6 @@
 <a class="btn btn-secondary w-100" href="home" role="button">STRONA GÓWNA</a>
 <table class="table">
 
-
     <thead class="thead-dark">
     <tr class="thead-light"><th colspan="7">Tabela TYP</th></tr>
         <th scope="col">#</th>
@@ -31,10 +30,9 @@
         </tbody>
 
 </table> 
-<button type="submit" class="btn btn-primary float-right" name="mod_typ">Modyfikuj</button>
+<button type="submit" class="btn btn-primary float-right" name="sub_typ">Usun</button>
         
     </form>       
-
 
 
 
@@ -65,10 +63,8 @@
     <?php endforeach;?>
     </tbody>
 </table> 
-<button type="submit" class="btn btn-primary float-right" name="mod_kolo">Modyfikuj</button>
+<button type="submit" class="btn btn-primary float-right" name="sub_kolo">Usun</button>
 </form> 
-
-
 
 
 <br><br><br>
@@ -82,12 +78,11 @@
     <th scope="col">Pole</th>
     <th scope="col">Obwód</th>
 </thead>
-
 <form action="deleteFigura" method="POST">
     <?php foreach ($kwadrat as $wynik): ?>
     <tbody>
         <td><div class="form-check">
-                <input class="form-check-input" type="radio" name="kwadrat" value="<?=$wynik->ID;?>" checked>
+                <input class="form-check-input" type="radio" name="kolo" value="<?=$wynik->ID;?>" checked>
             </div></td>
         <td><?=$wynik->ID;?></td>
         <td><?=$wynik->TYP;?></td>
@@ -97,11 +92,8 @@
     <?php endforeach;?>
     </tbody>
 </table> 
-<button type="submit" class="btn btn-primary float-right" name="mod_kwadrat">Modyfikuj</button>
+<button type="submit" class="btn btn-primary float-right" name="sub_kolo">Usun</button>
 </form> 
-
-
-
 
 <br><br><br>
 <table class="table">
@@ -130,10 +122,8 @@
     <?php endforeach;?>
     </tbody>
 </table> 
-<button type="submit" class="btn btn-primary float-right" name="mod_prostokat">Modyfikuj</button>
+<button type="submit" class="btn btn-primary float-right" name="sub_prostokat">Usun</button>
 </form> 
-
-
 
 
 <br><br><br>
@@ -161,10 +151,8 @@
     <?php endforeach;?>
     </tbody>
 </table> 
-<button type="submit" class="btn btn-primary float-right" name="mod_pieciokat">Modyfikuj</button>
+<button type="submit" class="btn btn-primary float-right" name="sub_pieciokat">Usun</button>
 </form> 
-
-
 
 
 <br><br><br>
@@ -182,8 +170,8 @@
     <?php foreach ($szesciokat as $wynik): ?>
     <tbody>
         <td><div class="form-check">
-            <input class="form-check-input" type="radio" name="szesciokat" value="<?=$wynik->ID;?>" checked>
-        </div></td>
+                <input class="form-check-input" type="radio" name="szesciokat" value="<?=$wynik->ID;?>" checked>
+            </div></td>
         <td><?=$wynik->ID;?></td>
         <td><?=$wynik->TYP;?></td>
         <td><?=$wynik->BOK;?></td>
@@ -192,11 +180,8 @@
     <?php endforeach;?>
     </tbody>
 </table> 
-<button type="submit" class="btn btn-primary float-right" name="mod_szesciokat">Modyfikuj</button>
+<button type="submit" class="btn btn-primary float-right" name="sub_szesciokat">Usun</button>
 </form> 
-
-
-
 
 <br><br><br>
 <table class="table">
@@ -227,5 +212,5 @@
     <?php endforeach;?>
     </tbody>
 </table> 
-<button type="submit" class="btn btn-primary float-right" name="mod_trojkat">Modyfikuj</button>
+<button type="submit" class="btn btn-primary float-right" name="sub_trojkat">Usun</button>
 </form> 

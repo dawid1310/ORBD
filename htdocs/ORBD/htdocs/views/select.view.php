@@ -11,7 +11,7 @@
         <th scope="col">#</th>
         <th scope="col">Nazwa</th>
     </thead>
-    <form action="select" method="POST">
+    <form action="delete" method="POST">
         
         <tbody>
 <tr>

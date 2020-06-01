@@ -11,7 +11,7 @@
 <h5> Podaj bok kwadratu</h5>
     <label for="kwadrat">Podaj długość boku</label>
     <input type="number" class="form-control" name="kwadrat" placeholder="np. 12">
-    <button type="submit" class="btn btn-primary float-right" name="kwadratadd">Dodaj</button>
+    <button type="submit" class="btn btn-primary float-right" name="kwadrat">Dodaj</button>
   </div><br><br>
 </form></div>
 
@@ -23,7 +23,7 @@
     <input type="number" class="form-control" name="prostokat1" placeholder="np. 12">
     <label for="prostokat2">Podaj długość drugiego boku</label>
     <input type="number" class="form-control" name="prostokat2" placeholder="np. 10">
-    <button type="submit" class="btn btn-primary float-right" name="prostokatadd">Dodaj</button>
+    <button type="submit" class="btn btn-primary float-right" name="prostokat">Dodaj</button>
   </div><br><br>
 </form></div>
 
@@ -33,7 +33,7 @@
     <h5> Koło </h5>
     <label for="kolo">Podaj promień koła</label>
     <input type="number" class="form-control" name="kolo" placeholder="np. 12">
-    <button type="submit" class="btn btn-primary float-right" name="koloadd">Dodaj</button>
+    <button type="submit" class="btn btn-primary float-right" name="kolo">Dodaj</button>
   </div><br><br>
 </form></div>
 
@@ -47,7 +47,7 @@
     <input type="number" class="form-control" id="trojkat2" placeholder="np. 10">
     <label for="trojkat3">Podaj długość trzeciego boku</label>
     <input type="number" class="form-control" id="trojkat3" placeholder="np. 11">
-    <button type="submit" class="btn btn-primary float-right" name="trojkatadd">Dodaj</button>
+    <button type="submit" class="btn btn-primary float-right" name="trojkat">Dodaj</button>
   </div><br><br>
 </form></div>
 
@@ -57,7 +57,7 @@
 <h5> Podaj bok pięciokąta foremnego</h5>
     <label for="pieciokat">Podaj długość boku</label>
     <input type="number" class="form-control" id="pieciokat" placeholder="np. 12">
-    <button type="submit" class="btn btn-primary float-right" name="pieciokatadd">Dodaj</button>
+    <button type="submit" class="btn btn-primary float-right" name="pieciokat">Dodaj</button>
   </div><br><br>
 </form></div>
 
@@ -67,7 +67,7 @@
 <h5> Podaj bok sześciokąta foremnego</h5>
     <label for="szesciokat">Podaj długość boku</label>
     <input type="number" class="form-control" id="szesciokat" placeholder="np. 12">
-    <button type="submit" class="btn btn-primary float-right" name="szesciokatadd">Dodaj</button>
+    <button type="submit" class="btn btn-primary float-right" name="szesciokat">Dodaj</button>
   </div><br><br>
 </form></div>
 

@@ -26,10 +26,14 @@ $db_username = "SYSTEM";
 $db_password = "root";
 
              return new PDO("oci:dbname=".$tns,$db_username,$db_password);
+
         }catch(PDOException $e){
                 //die(
                     echo $e->getMessage();
                 //);
             }
     }
+
+
+    
 }

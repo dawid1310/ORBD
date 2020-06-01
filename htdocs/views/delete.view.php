@@ -4,35 +4,6 @@
 </head>
 <body class="mx-auto w-50">
 <a class="btn btn-secondary w-100" href="home" role="button">STRONA GÓWNA</a>
-<table class="table">
-
-    <thead class="thead-dark">
-    <tr class="thead-light"><th colspan="7">Tabela TYP</th></tr>
-        <th scope="col">#</th>
-        <th scope="col">ID</th>
-        <th scope="col">Nazwa</th>
-        <th scope="col">Ilość ścian</th>
-    </thead>
-    <form action="deleteFigura" method="POST">
-        
-        <?php foreach ($typ as $wynik): ?>
-        <tbody>
-            <td>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="typ" value="<?=$wynik->ID;?>" checked>
-                </div>
-            </td>
-            <td><?=$wynik->ID;?></td>
-            <td><?=$wynik->NAZWA;?></td>
-            <td><?=$wynik->ILOSC_SCIAN;?></td>
-          
-        <?php endforeach;?>
-        </tbody>
-
-</table> 
-<button type="submit" class="btn btn-primary float-right" name="sub_typ">Usun</button>
-        
-    </form>       
 
 
 
@@ -48,7 +19,7 @@
     <th scope="col">Pole</th>
     <th scope="col">Obwód</th>
 </thead>
-<form action="deleteFigura" method="POST">
+<form action="delete" method="POST">
     <?php foreach ($kolo as $wynik): ?>
     <tbody>
         <td><div class="form-check">
@@ -72,20 +43,19 @@
 <thead class="thead-dark">
 <tr class="thead-light"><th colspan="7">Tabela KWADRAT</th></tr>
     <th scope="col">#</th>
-    <th scope="col">ID</th>
-    <th scope="col">Typ</th>
+    <!--<th scope="col">ID</th>
+    <th scope="col">Typ</th>-->
     <th scope="col">Bok</th>
     <th scope="col">Pole</th>
     <th scope="col">Obwód</th>
 </thead>
-<form action="deleteFigura" method="POST">
+<form action="delete" method="POST">
     <?php foreach ($kwadrat as $wynik): ?>
     <tbody>
         <td><div class="form-check">
                 <input class="form-check-input" type="radio" name="kolo" value="<?=$wynik->ID;?>" checked>
             </div></td>
-        <td><?=$wynik->ID;?></td>
-        <td><?=$wynik->TYP;?></td>
+   
         <td><?=$wynik->BOK;?></td>
         <td><?=$wynik->POLE;?></td>
         <td><?=$wynik->OBWOD;?></td>
@@ -107,7 +77,7 @@
     <th scope="col">Pole</th>
     <th scope="col">Obwód</th>
 </thead>
-<form action="deleteFigura" method="POST">
+<form action="delete" method="POST">
     <?php foreach ($prostokat as $wynik): ?>
     <tbody>
         <td><div class="form-check">
@@ -137,7 +107,7 @@
     <th scope="col">Pole</th>
     <th scope="col">Obwód</th>
 </thead>
-<form action="deleteFigura" method="POST">
+<form action="delete" method="POST">
     <?php foreach ($pieciokat as $wynik): ?>
     <tbody>
         <td><div class="form-check">
@@ -166,7 +136,7 @@
     <th scope="col">Pole</th>
     <th scope="col">Obwód</th>
 </thead>
-<form action="deleteFigura" method="POST">
+<form action="delete" method="POST">
     <?php foreach ($szesciokat as $wynik): ?>
     <tbody>
         <td><div class="form-check">
@@ -196,7 +166,7 @@
     <th scope="col">Pole</th>
     <th scope="col">Obwód</th>
 </thead>
-<form action="deleteFigura" method="POST">
+<form action="delete" method="POST">
     <?php foreach ($trojkat as $wynik): ?>
     <tbody>
         <td><div class="form-check">

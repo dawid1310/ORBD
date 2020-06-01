@@ -13,5 +13,6 @@ $router->get('add', 'controllers/add.php');
 $router->post('add', 'controllers/add.php');
 
 $router->get('select', 'controllers/select.php');
+$router->post('select', 'controllers/select.php');
 $router->get('delete', 'controllers/delete.php');
 $router->post('delete', 'controllers/delete.php');

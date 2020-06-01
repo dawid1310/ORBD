@@ -1,0 +1,34 @@
+Skład zespołu:
+Agnieszka Rogowska - agnieszka8rogowska@gmail.com - 1ID21A
+Dawid Kosmala	   - dawidkosmala1310@gmail.com	  - 1ID21A	
+
+Temat Projektu: Relacyjno - obiektowe bazy danych
+
+Używane technologie: system Windows, Oracle Database, PHP, HTML, CSS
+
+Tygodnie 1-4 - opracowanie części teoretycznej
+Tygodnie 4-14 - opracowanie części praktycznej, system do przechowywania danych o figurach geometrycznych
+Lista funkcjonalności: dodawanie, usuwanie, modyfikacja, odczyt
+
+Podział prac w zespole:
+Agnieszka Rogowska:
+- omówienie wybranej relacyjno - obiektowej bazy danych
+- typy danych łączące dane
+- tworzenie 
+- polimorfizm
+- hermetyzacja
+- identyfikatory obiektowe (OID)
+- Część praktyczna: Modyfikacja i wyświetlanie danych
+
+Dawid Kosmala:
+- metody operujące na danych
+- usuwanie 
+- dziedziczenie
+- abstrakcja (abstrakcyjność)
+- typy referencyjne (REF, DEREF)
+- porównanie możliwości związanych z obiektowością wybranej bazy danych z jej relacyjnymi możliwościami
+- Część praktyczna: Dodawanie oraz usuwanie danych
+
+Tematy prac inżynierskich: 
+Agnieszka Rogowska - Opracowanie aplikacji do internetowej sprzedaży biletów lotniczych.
+Dawid Kosmala - Opracowanie systemu do internetowej sprzedaży biletów na wydarzenia sportowe w postaci wielowarstwowej aplikacji bazy danych.

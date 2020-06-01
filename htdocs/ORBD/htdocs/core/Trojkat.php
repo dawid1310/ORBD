@@ -40,7 +40,7 @@ class Trojkat{
         $this->pole=$result['pole'];
     }
 
-    public function displayTrojkat(){
+    public function displayOne(){
         echo "Trojkat o id: ".$this->id."<br>";
         echo "Bok1 to: ".$this->bok1."<br>";
         echo "Bok2 to: ".$this->bok2."<br>";
@@ -49,6 +49,20 @@ class Trojkat{
         echo "Obwod to: ".$this->obwod."<br>";
     }
 
+    public function displayAll(){
+        $result = $app['database']->selectAll("trojkat");
+        foreach($result as $trojkat):
+        echo "Trojkat o id: ".$trojkat['id']."<br>";
+        echo "Bok to: ".$trojkat['bok']."<br>";
+        echo "Pole to: ".$trojkat['pole']."<br>";
+        echo "Obwod to: ".$trojkat['obwod']."<br>";
+        endforeach;
+
+    }
+    public function returnAll(){
+        $result = $app['database']->selectAll("kolo");
+        return $result;
+    }
     public function LoadToDB(){
         $app['database']->addTrojkat($this->bok1, $this->bok2, $this->bok3, $this->obwod, $this->pole);
     }
