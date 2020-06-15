@@ -5,14 +5,6 @@ class Queries{
     public function __construct($pdo){
         $this->pdo=$pdo;
     }
-/*
-
-    public function selectOne($id, $tabel){ 
-        $query = $this->pdo->prepare("select * from '{$table}' where id='{$id}'");
-        $query->execute();
-        
-        return $query->fetch(PDO::FETCH_ASSOC);
-    }*/
 
     public function selectAll($table){ 
         $query = $this->pdo->prepare("select * from {$table}");
