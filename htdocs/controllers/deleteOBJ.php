@@ -1,35 +1,38 @@
 <?php
-$kolo = $app['database']->selectAll('sys.kolo_obj');
-$kwadrat = $app['database']->selectAll('sys.kwadrat_obj');
-$prostokat = $app['database']->selectAll('sys.prostokat_obj');
-$trojkat = $app['database']->selectAll('sys.trojkat_obj');
-$pieciokat = $app['database']->selectAll('sys.pieciokat_obj');
-$szesciokat = $app['database']->selectAll('sys.szesciokat_obj');
-
-require 'views/deleteOBJ.view.php';
-
+$kolo = $app['database']->selectAll('sys.koloobj');
+$kwadrat = $app['database']->selectAll('sys.kwadratobj');
+$prostokat = $app['database']->selectAll('sys.prostokatobj');
+$trojkat = $app['database']->selectAll('sys.trojkatobj');
+$pieciokat = $app['database']->selectAll('sys.pieciokatobj');
+$szesciokat = $app['database']->selectAll('sys.szesciokatobj');
 if (isset($_POST['kolo'])) {
-    $usunKolo = $_POST['kolo']; 
-    echo 'kolo do usuniecia: '.$usunKolo;
+    $usunKolo = $_POST['kolo'];
+    $app['database']->deleteObj('KOLOOBJ', $usunKolo);
+    header("Location: deleteOBJ");
 }
 if (isset($_POST['kwadrat'])) {
-    $usunKwadrat = $_POST['kolo']; 
-    echo 'kwadrat do usuniecia: '.$usunKwadrat;
+    $usunKwadrat = $_POST['kwadrat']; 
+    $app['database']->deleteObj('kwadratobj', $usunKwadrat);
+    header("Location: deleteOBJ");
 }
 if (isset($_POST['prostokat'])) {
     $usunProstokat = $_POST['prostokat']; 
-    echo 'prostokat do usuniecia: '.$usunProstokat;
+    $app['database']->deleteObj('prostokatobj', $usunProstokat);
+    header("Location: deleteOBJ");
 }
 if (isset($_POST['trojkat'])) {
     $usunTrojkat = $_POST['trojkat']; 
-    echo 'trojkat do usuniecia: '.$usunTrojkat;
+    $app['database']->deleteObj('trojkatobj', $usunTrojkat);
+    header("Location: deleteOBJ");
 }
 if (isset($_POST['pieciokat'])) {
     $usunPieciokat = $_POST['pieciokat']; 
-    echo 'pieciokat do usuniecia: '.$usunPieciokat;
+    $app['database']->deleteObj('pieciokatobj', $usunPieciokat);
+    header("Location: deleteOBJ");
 }
 if (isset($_POST['szesciokat'])) {
     $usunSzesciokat = $_POST['szesciokat']; 
-    echo 'szesciokat do usuniecia: '.$usunSzesciokat;
+    $app['database']->deleteObj('szesciokatobj', $usunSzesciokat);
+    header("Location: deleteOBJ");
 }
-
+require 'views/deleteOBJ.view.php';

@@ -7,30 +7,35 @@ $pieciokat = $app['database']->selectAll('sys.pieciokat');
 $szesciokat = $app['database']->selectAll('sys.szesciokat');
 
 //die(var_dump($app['database']->selectAll('sys.a_kwadrat')));
-require 'views/delete.view.php';
 
 if (isset($_POST['kolo'])) {
     $usunKolo = $_POST['kolo']; 
-    echo 'kolo do usuniecia: '.$usunKolo;
+    $app['database']->delete('kolo', $usunKolo);
+    header("Location: delete");
 }
 if (isset($_POST['kwadrat'])) {
-    $usunKwadrat = $_POST['kolo']; 
-    echo 'kwadrat do usuniecia: '.$usunKwadrat;
+    $usunKwadrat = $_POST['kwadrat']; 
+    $app['database']->delete('kwadrat', $usunKwadrat);
+    header("Location: delete");
 }
 if (isset($_POST['prostokat'])) {
     $usunProstokat = $_POST['prostokat']; 
-    echo 'prostokat do usuniecia: '.$usunProstokat;
+    header("Location: delete");
 }
 if (isset($_POST['trojkat'])) {
     $usunTrojkat = $_POST['trojkat']; 
-    echo 'trojkat do usuniecia: '.$usunTrojkat;
+    $app['database']->delete('trojkat', $usunTrojkat);
+    header("Location: delete");
 }
 if (isset($_POST['pieciokat'])) {
     $usunPieciokat = $_POST['pieciokat']; 
-    echo 'pieciokat do usuniecia: '.$usunPieciokat;
+    $app['database']->delete('pieciokat', $usunPieciokat);
+    header("Location: delete");
 }
 if (isset($_POST['szesciokat'])) {
     $usunSzesciokat = $_POST['szesciokat']; 
-    echo 'szesciokat do usuniecia: '.$usunSzesciokat;
+    $app['database']->delete('szesciokat', $usunSzesciokat);
+    header("Location: delete");
 }
+require 'views/delete.view.php';
 
