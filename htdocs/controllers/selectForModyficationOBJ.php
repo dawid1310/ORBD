@@ -1,4 +1,3 @@
 <?php
 $typ = $app['database']->selectAll('sys.typ');
-require 'views/select.view.php';
-
+require 'views/selectForModificationOBJ.view.php';

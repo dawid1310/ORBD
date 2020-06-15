@@ -6,4 +6,4 @@
     $trojkat = $app['database']->selectAll('sys.trojkat');
     $pieciokat = $app['database']->selectAll('sys.pieciokat');
     $szesciokat = $app['database']->selectAll('sys.szesciokat');
-require 'views/modify.view.php';
+    require 'views/display.view.php';
