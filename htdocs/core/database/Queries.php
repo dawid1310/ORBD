@@ -5,36 +5,14 @@ class Queries{
     public function __construct($pdo){
         $this->pdo=$pdo;
     }
-
-    public function dodajTypy(){
-        $query = $this->pdo->prepare("
-            CREATE TYPE Kwadrat_typ
-                AS OBJECT(
-                Bok NUMBER(7),       
-                Pole NUMBER(7),        
-                Obwod NUMBER(7),        
-                MEMBER FUNCTION obwod_i_pole RETURN VARCHAR2,       
-                PRAGMA RESTRICT_REFERENCES(obwod_i_pole, WNDS, RNDS, WNPS, RNPS ));       
-
-            CREATE TYPE BODY Kwadrat_typ AS       
-                MEMBER FUNCTION obwod_i_pole RETURN VARCHAR2 IS       
-                BEGIN      
-                    RETURN ('Pole kwadratu to '||Pole || ', obwod kwadratu to ' || obwod );      
-                END obwod_i_pole;      
-                END;
-        ");
-        $query->execute();
-    }
-
-
-
+/*
 
     public function selectOne($id, $tabel){ 
         $query = $this->pdo->prepare("select * from '{$table}' where id='{$id}'");
         $query->execute();
         
         return $query->fetch(PDO::FETCH_ASSOC);
-    }
+    }*/
 
     public function selectAll($table){ 
         $query = $this->pdo->prepare("select * from {$table}");
@@ -42,75 +20,154 @@ class Queries{
         return $query->fetchAll(PDO::FETCH_CLASS);
     }
 
-    public function selectNazwaStadionu($id){
-        $query = $this->pdo->prepare("select nazwa from stadion where idStadion=:idStadion");
-        $query->execute(['idStadion' => $id]); 
+    public function delete($tabela, $id){
+        $query = $this->pdo->prepare("delete from sys.{$tabela} where id={$id}");
+        $query->execute();
+    }
+
+    public function deleteObj($tabela, $id){
+        $id=$id*1;
+        $query = $this->pdo->prepare("delete from sys.{$tabela} o where o.id={$id}");
+        $query->execute();
+    }
+
+    public function maxId($tabela){
+        $query = $this->pdo->prepare("
+        Select max(id) from sys.{$tabela}
+        ");
+        $query->execute();
         $result = $query->fetchColumn();
         return $result;
     }
 
-    public function addKolo($promien, $srednica, $obwod, $pole){ 
+    public function addKolo($app, $promien, $srednica, $obwod, $pole){ 
+        $nextId=$app['database']->maxId("kolo")+1;
         $query = $this->pdo->prepare(
-            "Insert into kolo(typ, promien, srednica, obwod, pole) 
-            values(1, '{$promien}', '{$srednica}', '{$obwod}', '{$pole}')");
+            "Insert into sys.kolo(id, typ, promien, srednica, obwod, pole) 
+            values({$nextId}, 1, '{$promien}', '{$srednica}', '{$obwod}', '{$pole}')");
         $query->execute();
     }
 
+    public function addKoloOBJ($app, $pole, $obwod, $promien, $srednica ){ 
+        $nextId=$app['database']->maxId("koloOBJ")+1;
+        $query = $this->pdo->prepare(
+            "Insert into sys.koloOBJ 
+            values({$nextId}, '{$pole}', '{$obwod}', '{$promien}', '{$srednica}')");
+        $query->execute();
+    }
 
-
-
-
-    public function addKwadrat($bok, $obwod, $pole){ 
+    public function modifyKolo($id, $promien, $srednica, $obwod, $pole, $tabela){
         $query = $this->pdo->prepare("
-            Insert into sys.kwadrat(typ, bok, obwod, pole) 
-            values(2, '{$bok}', '{$obwod}', '{$pole}')
+        Update sys.{$tabela} set promien = {$promien}, srednica = {$srednica}, pole = {$pole}, obwod = {$obwod} 
+        where id = {$id}
+        ");
+        $query->execute();
+    }
+    
+    public function addKwadrat($app, $bok, $obwod, $pole){
+        $nextId=$app['database']->maxId("kwadrat")+1;
+        $query = $this->pdo->prepare("
+            Insert into sys.kwadrat(id, typ, bok, pole, obwod) 
+            values({$nextId}, 2, {$bok}, {$pole}, {$obwod})
             ");
-            echo $bok;
             $query->execute();
     }
 
-    public function addKwadratOBJ($bok, $obwod, $pole){ 
+    public function addKwadratOBJ($app, $bok, $obwod, $pole){
+        $nextId=$app['database']->maxId("kwadratobj")+1;
         $query = $this->pdo->prepare("
-        INSERT INTO sys.a_Kwadrat
-        VALUES({$bok}, {$obwod}, {$pole})    
+        INSERT INTO sys.KwadratObj
+        VALUES({$nextId}, {$bok}, {$obwod}, {$pole})    
         ");
-        var_dump($query);
         $query->execute();
     }
 
-
-
-
-
-
-
-
+    public function modifyKPS($id, $bok, $obwod, $pole, $tabela){
+        $query = $this->pdo->prepare("
+        Update sys.{$tabela} set bok = {$bok}, pole = {$pole}, obwod = {$obwod} 
+        where id = {$id}
+        ");
+        $query->execute();
+    }
     
-    public function addProstokat($bok1, $bok2, $obwod, $pole){ 
+    public function addProstokat($app, $bok1, $bok2, $obwod, $pole){ 
+        $nextId=$app['database']->maxId("prostokat")+1;
         $query = $this->pdo->prepare(
-            "Insert into prostokat(typ, bok1, bok2, obwod, pole) 
-            values(3, '{$bok1}', '{$bok2}', '{$obwod}', '{$pole}')");
+            "Insert into sys.prostokat(id, typ, bok1, bok2, obwod, pole) 
+            values({$nextId}, 3, '{$bok1}', '{$bok2}', '{$obwod}', '{$pole}')");
         $query->execute();
     }
 
-    public function addTrojkat($bok1, $bok2, $bok3, $obwod, $pole){ 
+    public function addProstokatOBJ($app, $pole, $obwod, $bok1, $bok2){ 
+        $nextId=$app['database']->maxId("prostokatOBJ")+1;
         $query = $this->pdo->prepare(
-            "Insert into trojkat(typ, bok1, bok2, bok3, obwod, pole) 
-            values(3, '{$bok1}', '{$bok2}', '{$bok3}', '{$obwod}', '{$pole}')");
+            "Insert into sys.prostokatOBJ 
+            values({$nextId},'{$pole}', '{$obwod}','{$bok1}', '{$bok2}' )");
         $query->execute();
     }
 
-    public function addPieciokat($bok, $obwod, $pole){ 
-        $query = $this->pdo->prepare(
-            "Insert into pieciokat(typ, bok, obwod, pole) 
-            values(2, '{$bok}', '{$obwod}', '{$pole}')");
+    public function modifyProstokat($id, $bok1, $bok2, $obwod, $pole, $tabela){
+        $query = $this->pdo->prepare("
+        Update sys.{$tabela} set bok1 = {$bok1}, bok2 = {$bok2}, pole = {$pole}, obwod = {$obwod} 
+        where id = {$id}
+        ");
         $query->execute();
     }
 
-    public function addSzesciokat($bok, $obwod, $pole){ 
+    public function addTrojkat($app, $bok1, $bok2, $bok3, $obwod, $pole){ 
+        $nextId=$app['database']->maxId("trojkat")+1;
         $query = $this->pdo->prepare(
-            "Insert into szesciokat(typ, bok, obwod, pole) 
-            values(2, '{$bok}', '{$obwod}', '{$pole}')");
+            "Insert into sys.trojkat(id, typ, bok1, bok2, bok3, obwod, pole) 
+            values({$nextId}, 2, '{$bok1}', '{$bok2}', '{$bok3}', '{$obwod}', '{$pole}')");
         $query->execute();
     }
-}
+
+    public function addTrojkatOBJ($app, $pole, $obwod, $bok1, $bok2, $bok3){ 
+        $nextId=$app['database']->maxId("trojkatObj")+1;
+        $query = $this->pdo->prepare(
+            "Insert into sys.trojkatObj
+            values({$nextId}, '{$pole}', '{$obwod}', '{$bok1}', '{$bok2}', '{$bok3}')");
+        $query->execute();
+    }
+
+    public function modifyTrojkat($id, $bok1, $bok2, $bok3, $obwod, $pole, $tabela){
+        $query = $this->pdo->prepare("
+        Update sys.{$tabela} set bok1 = {$bok1}, bok2 = {$bok2}, bok3 = {$bok3}, pole = {$pole}, obwod = {$obwod} 
+        where id = {$id}
+        ");
+        $query->execute();
+    }
+
+    public function addPieciokat($app, $bok, $obwod, $pole){ 
+        $nextId=$app['database']->maxId("pieciokat")+1;
+        $query = $this->pdo->prepare(
+            "Insert into sys.pieciokat(id,typ, bok, obwod, pole) 
+            values({$nextId}, 2, '{$bok}', '{$obwod}', '{$pole}')");
+        $query->execute();
+    }
+
+    public function addPieciokatOBJ($app, $pole, $obwod, $bok){ 
+        $nextId=$app['database']->maxId("pieciokatOBJ")+1;
+        $query = $this->pdo->prepare(
+            "Insert into sys.pieciokatOBJ 
+            values({$nextId},'{$pole}', '{$obwod}', '{$bok}' )");
+        $query->execute();
+    }
+
+    public function addSzesciokat($app, $bok, $obwod, $pole){ 
+        $nextId=$app['database']->maxId("szesciokat")+1;
+        $query = $this->pdo->prepare(
+            "Insert into sys.szesciokat(id, typ, bok, obwod, pole) 
+            values({$nextId}, 2, '{$bok}', '{$obwod}', '{$pole}')");
+        $query->execute();
+    }
+
+    public function addSzesciokatOBJ($app,$pole, $obwod, $bok){ 
+        $nextId=$app['database']->maxId("szesciokatOBJ")+1;
+        $query = $this->pdo->prepare(
+            "Insert into sys.szesciokatOBJ 
+            values({$nextId},'{$pole}', '{$obwod}','{$bok}' )");
+        $query->execute();
+    }
+
+}//święta klamra nietykalna
