@@ -11,7 +11,7 @@
         <th scope="col">#</th>
         <th scope="col">Nazwa</th>
     </thead>
-    <form action="display" method="POST">
+    <form action="modify" method="POST">
         
         <tbody>
 <tr>
@@ -25,7 +25,7 @@
     <td><div class="form-check">
         <input class="form-check-input" type="radio" name="select" value="trojkat">
     </div></td>
-    <td>Trójkat</td>
+    <td>Trojkat</td>
 </tr>
 <tr>
     <td><div class="form-check">

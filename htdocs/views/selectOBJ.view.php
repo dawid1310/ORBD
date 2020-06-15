@@ -2,8 +2,8 @@
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body class="mx-auto w-50">
-<a class="btn btn-secondary w-100" href="home" role="button">STRONA GÓWNA</a>
+<body class="mx-auto w-50"><br><br>
+<a class="btn btn-success w-100" href="home" role="button">STRONA GÓWNA</a><br><br>
 <table class="table w-50 mx-auto">
     <thead class="thead-dark">
         
@@ -11,7 +11,7 @@
         <th scope="col">#</th>
         <th scope="col">Nazwa</th>
     </thead>
-    <form action="select" method="POST">
+    <form action="displayOBJ" method="POST">
         
         <tbody>
 <tr>
@@ -25,7 +25,7 @@
     <td><div class="form-check">
         <input class="form-check-input" type="radio" name="select" value="trojkat">
     </div></td>
-    <td>Trojkat</td>
+    <td>Trójkat</td>
 </tr>
 <tr>
     <td><div class="form-check">
@@ -53,5 +53,5 @@
 </tr>
         
         <tr><td colspan="2">
-        <button type="submit" class="btn btn-secondary float-right">Wyświetl</button></td></tr></tbody> </table> 
+        <button type="submit" class="btn btn-primary float-right">Wyświetl</button></td></tr></tbody> </table> 
     </form>
