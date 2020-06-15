@@ -1,4 +1,7 @@
 <?php
+function dd($var){
+    die(var_dump($var));
+}
 $app = [];
 $app['config'] = require 'config.php';
 require 'core/Router.php';
@@ -14,3 +17,4 @@ require 'core/Szesciokat.php';
 $app['database'] = new Queries(
     Connection::make($app['config']['database'])
 );
+

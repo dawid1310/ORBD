@@ -3,10 +3,15 @@
 class Kwadrat{
 
     private $id;
-    private $typ=4;
+    private $typ;
     private $bok;
     private $pole;
     private $obwod;
+    private $nextId=0;
+    
+    public function setId($id){
+        $this->id = $id;
+    }
     
     private function obliczPole($bok){
         $this->pole = pow($bok, 2);
@@ -16,23 +21,17 @@ class Kwadrat{
         $this->obwod = $bok*4;
     }
 
-    private function getId($app){
-        $this->id = $app['database']->selectId("kwadrat")+1;
-    }
-
-    public function getFromUser($bok, $app){
+    public function getFromUser($bok){
         $this->bok=$bok;
-        $this-getId($app);
         $this->obliczObwod($bok);
         $this->obliczPole($bok);
     }
 
-    public function getFromDB($id, $app){
+    public function getFromDB($id){
         $result = $app['database']->selectOne($id, "kwadrat");
         $this->id=$result['id'];
         $this->typ=$result['typ'];
         $this->bok=$result['bok'];
-        $this->srednica=$result['srednica'];
         $this->obwod=$result['obwod'];
         $this->pole=$result['pole'];
     }
@@ -44,7 +43,16 @@ class Kwadrat{
     }
 
     public function LoadToDB($app){
-        $app['database']->addKwadrat($this->$id, $this->$typ, $this->bok, $this->obwod, $this->pole);
+        $app['database']->addKwadrat($app, $this->bok, $this->obwod, $this->pole);
+    }
+
+    
+    public function modify($app, $tabela){
+        $app['database']->modifyKPS($this->id, $this->bok, $this->obwod, $this->pole, $tabela);
+    }
+
+    public function LoadToDBOBJ($app){
+        $app['database']->addKwadratOBJ($app, $this->pole, $this->obwod, $this->bok);
     }
 
 }

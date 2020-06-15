@@ -8,6 +8,13 @@ class Szesciokat{
     private $pole;
     private $obwod;
     
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    public function modify($app, $tabela){
+        $app['database']->modifyKPS($this->id, $this->bok, $this->obwod, $this->pole, $tabela);
+    }
 
     private function obliczPole($bok){
         $this->pole = (3*pow($bok, 2)*sqrt(3))/2;
@@ -17,14 +24,8 @@ class Szesciokat{
         $this->obwod = $bok*6;
     }
 
-    private function getId($app){
-        $this->id = $app['database']->selectId("szesciokat")+1;
-    }
-
-
-    public function getFromUser($bok, $app){
+    public function getFromUser($bok){
         $this->bok=$bok;
-        $this->getId($app);
         $this->obliczObwod($bok);
         $this->obliczPole($bok);
     }
@@ -46,7 +47,15 @@ class Szesciokat{
     }
 
     public function LoadToDB($app){
-        $app['database']->addSzesciokat($this->bok, $this->obwod, $this->pole);
+        $app['database']->addSzesciokat($app, $this->bok, $this->obwod, $this->pole);
+    }
+    public function LoadToDBOBJ($app){
+        $app['database']->addSzesciokatOBJ($app,$this->pole, $this->obwod, $this->bok);
     }
 
 }
+
+
+
+
+

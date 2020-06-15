@@ -8,26 +8,26 @@ class Pieciokat{
     private $pole;
     private $obwod;
     
-    function cot($rad)
-    {
-    return tan(M_PI_2 - rad2deg($rad));
+
+    public function setId($id){
+        $this->id = $id;
     }
 
+    public function modify($app, $tabela){
+        $app['database']->modifyKPS($this->id, $this->bok, $this->obwod, $this->pole, $tabela);
+    }
+    
     private function obliczPole($bok){
-        $this->pole = 5*pow($bok, 2)/4*cot(36);
+
+        $this->pole = sqrt(25+10*sqrt(5))/4*pow($bok, 2);
     }
 
     private function obliczObwod($bok){
         $this->obwod = $bok*5;
     }
 
-    private function getId($app){
-        $this->id = $app['database']->selectId("pieciokat")+1;
-    }
-
-    public function getFromUser($bok, $app){
+    public function getFromUser($bok){
         $this->bok=$bok;
-        $this->getId($app);
         $this->obliczObwod($bok);
         $this->obliczPole($bok);
     }
@@ -49,7 +49,10 @@ class Pieciokat{
     }
 
     public function LoadToDB($app){
-        $app['database']->addPieciokat($this->bok, $this->obwod, $this->pole);
+        $app['database']->addPieciokat($app, $this->bok, $this->obwod, $this->pole);
+    }
+    public function LoadToDBOBJ($app){
+        $app['database']->addPieciokatOBJ($app, $this->pole, $this->obwod, $this->bok);
     }
 
 }

@@ -9,6 +9,19 @@ class Kolo{
     private $pole;
     private $obwod;
     
+
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    public function modify($app, $tabela){
+        $app['database']->modifyKolo($this->id, $this->promien, $this->srednica, $this->obwod, $this->pole, $tabela);
+    }
+
+    public function modifyOBJ($app){
+        $app['database']->modifyKoloOBJ($this->id, $this->promien, $this->srednica, $this->obwod, $this->pole);
+    }
+
     private function obliczPole($promien){
         $this->pole = pow($promien, 2)*pi();
     }
@@ -17,14 +30,9 @@ class Kolo{
         $this->obwod = $promien*2*pi();
     }
 
-    private function getId($app){
-        $this->id = $app['database']->selectId("kolo")+1;
-    }
-
-    public function getFromUser($promien, $app){
+    public function getFromUser($promien){
         $this->promien=$promien;
         $this->srednica=2*$promien;
-        $this->getId($app);
         $this->obliczObwod($promien);
         $this->obliczPole($promien);
     }
@@ -48,7 +56,10 @@ class Kolo{
     }
 
     public function LoadToDB($app){
-        $app['database']->addKolo($this->promien, $this->srednica, $this->obwod, $this->pole);
+        $app['database']->addKolo($app, $this->promien, $this->srednica, $this->obwod, $this->pole);
+    }
+    public function LoadToDBOBJ($app){
+        $app['database']->addKoloOBJ($app, $this->pole, $this->obwod, $this->promien, $this->srednica );
     }
 
 }

@@ -9,6 +9,14 @@ class Trojkat{
     private $bok3;
     private $pole;
     private $obwod;
+
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    public function modify($app, $tabela){
+        $app['database']->modifyTrojkat($this->id, $this->bok1, $this->bok2, $this->bok3, $this->obwod, $this->pole, $tabela);
+    }
     
     private function obliczPole($bok1, $bok2, $bok3){
         $this->obliczObwod($bok1, $bok2, $bok3);
@@ -21,15 +29,10 @@ class Trojkat{
         $this->obwod = $bok1 + $bok2 + $bok3;
     }
 
-    private function getId($app){
-        $this->id = $app['database']->selectId("trojkat")+1;
-    }
-
     public function getFromUser($bok1, $bok2, $bok3){
         $this->bok1=$bok1;
         $this->bok2=$bok2;
         $this->bok3=$bok3;
-        $this->getId($app);
         $this->obliczObwod($bok1, $bok2, $bok3);
         $this->obliczPole($bok1, $bok2, $bok3);
     }
@@ -55,7 +58,9 @@ class Trojkat{
     }
 
     public function LoadToDB($app){
-        $app['database']->addTrojkat($this->bok1, $this->bok2, $this->bok3, $this->obwod, $this->pole);
+        $app['database']->addTrojkat($app, $this->bok1, $this->bok2, $this->bok3, $this->obwod, $this->pole);
     }
-
+    public function LoadToDBOBJ($app){
+        $app['database']->addTrojkatOBJ($app, $this->pole, $this->obwod, $this->bok1, $this->bok2, $this->bok3);
+    }
 }

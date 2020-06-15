@@ -8,7 +8,13 @@ class Prostokat{
     private $bok2;
     private $pole;
     private $obwod;
+
+
+    public function setId($id){
+        $this->id = $id;
+    }
     
+
     private function obliczPole($bok1, $bok2){
         $this->pole = $bok1 * $bok2;
     }
@@ -17,14 +23,9 @@ class Prostokat{
         $this->obwod = $bok1 * 2 + $bok2 * 2;
     }
 
-    private function getId($app){
-        $this->id = $app['database']->selectId("prostokat")+1;
-    }
-
-    public function getFromUser($bok1, $bok2, $app){
+    public function getFromUser($bok1, $bok2){
         $this->bok1=$bok1;
         $this->bok2=$bok2;
-        $this->getId($app);
         $this->obliczObwod($bok1, $bok2);
         $this->obliczPole($bok1, $bok2);
     }
@@ -48,7 +49,15 @@ class Prostokat{
     }
 
     public function LoadToDB($app){
-        $app['database']->addProstokat( $this->bok1, $this->bok2, $this->obwod, $this->pole);
+        $app['database']->addProstokat($app, $this->bok1, $this->bok2, $this->obwod, $this->pole);
     }
+
+    public function modify($app, $tabela){
+        $app['database']->modifyProstokat($this->id, $this->bok1, $this->bok2, $this->obwod, $this->pole, $tabela);
+    }
+    public function LoadToDBOBJ($app){
+        $app['database']->addProstokatOBJ($app, $this->pole, $this->obwod, $this->bok1, $this->bok2);
+    }
+
 
 }
