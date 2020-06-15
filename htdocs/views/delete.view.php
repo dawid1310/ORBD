@@ -2,8 +2,8 @@
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body class="mx-auto w-50">
-<a class="btn btn-secondary w-100" href="home" role="button">STRONA GÓWNA</a>
+<body class="mx-auto w-50"><br><br>
+<a class="btn btn-primary w-100" href="home" role="button">STRONA GÓWNA</a><br><br>
 
 
 
@@ -43,8 +43,7 @@
 <thead class="thead-dark">
 <tr class="thead-light"><th colspan="7">Tabela KWADRAT</th></tr>
     <th scope="col">#</th>
-    <!--<th scope="col">ID</th>
-    <th scope="col">Typ</th>-->
+
     <th scope="col">Bok</th>
     <th scope="col">Pole</th>
     <th scope="col">Obwód</th>
@@ -53,7 +52,7 @@
     <?php foreach ($kwadrat as $wynik): ?>
     <tbody>
         <td><div class="form-check">
-                <input class="form-check-input" type="radio" name="kolo" value="<?=$wynik->ID;?>" checked>
+                <input class="form-check-input" type="radio" name="kwadrat" value="<?=$wynik->ID;?>" checked>
             </div></td>
    
         <td><?=$wynik->BOK;?></td>
@@ -62,7 +61,7 @@
     <?php endforeach;?>
     </tbody>
 </table> 
-<button type="submit" class="btn btn-primary float-right" name="sub_kolo">Usun</button>
+<button type="submit" class="btn btn-primary float-right" name="sub_kwadrat">Usun</button>
 </form> 
 
 <br><br><br>
